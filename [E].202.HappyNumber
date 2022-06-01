@@ -1,0 +1,31 @@
+public class Solution {
+    public bool IsHappy(int n) {
+        List<int> digits = new List<int>();
+		int a = n;
+		int sum = 0;
+		int loopCount = 0;
+		while (loopCount < 100)
+		{
+			digits.Clear();
+			int length = a.ToString().Length;
+			for (int i = 0; i < length; i++)
+			{
+				digits.Add(a % 10);
+				a = a / 10;
+			}
+			sum = 0;
+			foreach (int digit in digits)
+			{
+				sum += digit * digit;
+			}
+
+			if (sum == 1)
+			{
+				return true;
+			}
+			loopCount++;
+			a = sum;
+		}
+		return false;
+    }
+}
