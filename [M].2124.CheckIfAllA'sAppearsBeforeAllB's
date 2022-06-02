@@ -1,0 +1,29 @@
+public class Solution {
+    public bool CheckString(string s)
+		{
+			bool doesAHalfEnd = false;
+			int i = 0;
+			do
+			{
+				if (s[i] != 'a')
+				{
+					doesAHalfEnd = true;
+					break;
+				}
+				i++;
+			} while (!doesAHalfEnd && i < s.Length - 1);
+
+            if (i == s.Length - 1)
+			{
+				return true;
+			}
+			for (int j = i; j < s.Length; j++)
+			{
+				if (s[j] != 'b')
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+}
