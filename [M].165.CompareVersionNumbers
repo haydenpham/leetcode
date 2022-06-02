@@ -1,0 +1,55 @@
+public class Solution {
+    public int CompareVersion(string version1, string version2)
+		{
+			string[] version1Array = version1.Split('.');
+			string[] version2Array = version2.Split('.');
+			List<int> version1List = new List<int>();
+			
+			foreach (string s in version1Array)
+			{
+				version1List.Add(int.Parse(s));
+			}
+			List<int> version2List = new List<int>();
+			foreach (string s in version2Array)
+			{
+				version2List.Add(int.Parse(s));
+			}
+
+			int maximumNumberOfDigits = 0;
+			if (version1List.Count > version2List.Count)
+			{
+				maximumNumberOfDigits = version1List.Count;
+				
+				while (maximumNumberOfDigits != version2List.Count)
+				{
+					version2List.Add(0);
+				}
+			}
+			else if (version1List.Count < version2List.Count)
+			{
+				maximumNumberOfDigits = version2List.Count;
+				
+				while (maximumNumberOfDigits != version1List.Count)
+				{
+					version1List.Add(0);
+				}
+			}
+        else
+			{
+				maximumNumberOfDigits = version1List.Count;
+			}
+
+			for (int i = 0; i < maximumNumberOfDigits; i++)
+			{
+				if (version1List[i] > version2List[i])
+				{
+					return 1;
+				}
+				if (version1List[i] < version2List[i])
+				{
+					return -1;
+				}
+			}
+			return 0;
+		}
+}
