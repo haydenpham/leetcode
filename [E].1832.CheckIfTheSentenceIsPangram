@@ -1,0 +1,27 @@
+public class Solution
+    {
+        private static string EnglishAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower();
+        private static bool[] IsLetterInSentence = new bool[EnglishAlphabet.Length];
+        public bool CheckIfPangram(string sentence)
+        {
+			for (int i = 0; i < IsLetterInSentence.Length; i++)
+			{
+                IsLetterInSentence[i] = false;
+			}
+			foreach (char letter in sentence)
+			{
+                if (EnglishAlphabet.Contains(letter))
+				{
+                    IsLetterInSentence[EnglishAlphabet.IndexOf(letter)] = true;
+				}
+			}
+			for (int i = 0; i < IsLetterInSentence.Length; i++)
+			{
+				if (IsLetterInSentence[i] == false)
+				{
+					return false;
+				}
+			}
+			return true;
+        }
+    }
