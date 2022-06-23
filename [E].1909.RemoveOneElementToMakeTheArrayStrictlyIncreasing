@@ -1,0 +1,45 @@
+public class Solution
+	{
+		public bool CanBeIncreasing(int[] nums)
+		{
+			for (int i = 0; i < nums.Length; i++)
+			{
+				if (IsArrayStrictlyIncreasing(RemoveAnElementFromArray(nums, i)))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public bool IsArrayStrictlyIncreasing(int[] nums)
+		{
+			for (int i = 0; i < nums.Length - 1; i++)
+			{
+				if (nums[i] >= nums[i + 1])
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		public int[] RemoveAnElementFromArray(int[] array, int index)
+		{
+			int[] result = new int[array.Length - 1];
+			int n = 0;
+			for (int i = 0; i < array.Length; i++)
+			{
+				if (i == index)
+				{
+					continue;
+				}
+				else
+				{
+					result[n++] = array[i];
+				}
+			}
+			return result;
+		}
+
+	}
