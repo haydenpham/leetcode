@@ -1,0 +1,38 @@
+public class Solution
+    {
+        public static string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public List<string> CellsInRange(string s)
+        {
+            char firstCol = s[0];
+            char secondCol = s[3];
+            
+            int firstRow = Convert.ToInt32(s[1].ToString());
+
+            int secondRow = Convert.ToInt32(s[4].ToString());
+            
+            List<string> listOfCells = new List<string>();
+            int a = Alphabet.IndexOf(firstCol);
+            int b = Alphabet.IndexOf(secondCol);
+
+            
+            if (Alphabet.IndexOf(firstCol) == Alphabet.IndexOf(secondCol))
+			{
+				for (int i = firstRow; i <= secondRow; i++)
+				{
+					listOfCells.Add(firstCol.ToString() + i.ToString());
+				}
+			}
+            if (Alphabet.IndexOf(firstCol) < Alphabet.IndexOf(secondCol))
+			{
+				for (int i = Alphabet.IndexOf(firstCol); i <= Alphabet.IndexOf(secondCol); i++)
+				{
+					for (int j = firstRow; j <= secondRow; j++)
+					{
+                        listOfCells.Add(Alphabet[i].ToString() + j.ToString());
+					}
+				}
+			}
+
+            return listOfCells;
+        }
+    }
