@@ -10,9 +10,9 @@ This repository contains all the solved solutions for coding problems on LeetCod
 ## Naming Format:
 [Difficulty][Programming Language].question number.question title
 ### Difficulty:
-1. E: Easy
-2. M: Medium
-3. H: Hard
+E: Easy
+M: Medium
+H: Hard
 
 
 
