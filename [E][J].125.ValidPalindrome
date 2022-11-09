@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        s = s.toLowerCase();
+        StringBuilder forwardBuilder = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (isAlphaNumeric(s.charAt(i))){
+                forwardBuilder.append(s.charAt(i));
+            }
+        }
+        StringBuilder backwardBuilder = new StringBuilder();
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (isAlphaNumeric(s.charAt(i))){
+                backwardBuilder.append(s.charAt(i));
+            }
+        }
+        if (backwardBuilder.compareTo(forwardBuilder) == 0){
+            return true;
+        }
+        else return false;
+    }
+    public static boolean isAlphaNumeric(char character){
+        if ((character >= '0' && character <= '9') || (character >= 'a' && character <= 'z') || (character >= 'A' && character <= 'Z')) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}
