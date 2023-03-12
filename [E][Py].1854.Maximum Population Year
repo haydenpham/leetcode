@@ -1,0 +1,16 @@
+class Solution:
+    def maximumPopulation(self, logs: List[List[int]]) -> int:
+        populationTracker = {}
+        for log in logs:
+            for i in range(log[0], log[1]):
+                if i not in populationTracker:
+                    populationTracker[i] = 1
+                else:
+                    populationTracker[i] += 1
+        maxPopulation = 0
+        maxYear = 0
+        for i in sorted(populationTracker):
+            if populationTracker[i] > maxPopulation:
+                maxPopulation = populationTracker[i]
+                maxYear = i
+        return maxYear
