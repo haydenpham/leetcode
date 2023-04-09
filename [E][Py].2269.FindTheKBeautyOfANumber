@@ -1,0 +1,9 @@
+class Solution:
+    def divisorSubstrings(self, num: int, k: int) -> int:
+        numberString = str(num)
+        k_beauty = 0
+        for i in range(0, len(numberString)-k+1):
+            substring = numberString[i:i+k]
+            if int(substring) != 0 and num % int(substring) == 0:
+                k_beauty += 1
+        return k_beauty
