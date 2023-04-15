@@ -1,0 +1,31 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        firstRow = "qwertyuiop"
+        secondRow = "asdfghjkl"
+        thirdRow = "zxcvbnm"
+
+        returnStringList = []
+        for word in words:
+            canBeTypedInARow = True
+            if word[0].lower() in firstRow:
+                for letter in word:
+                    if letter.lower() not in firstRow:
+                        canBeTypedInARow = False
+                        break
+                if canBeTypedInARow:
+                    returnStringList.append(word)
+            elif word[0].lower() in secondRow:
+                for letter in word:
+                    if letter.lower() not in secondRow:
+                        canBeTypedInARow = False
+                        break
+                if canBeTypedInARow:
+                    returnStringList.append(word)
+            elif word[0].lower() in thirdRow:
+                for letter in word:
+                    if letter.lower() not in thirdRow:
+                        canBeTypedInARow = False
+                        break
+                if canBeTypedInARow:
+                    returnStringList.append(word)
+        return returnStringList
