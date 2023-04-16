@@ -1,0 +1,38 @@
+# For brevity, some methods are omitted
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            raise IndexError("Stack is empty")
+
+    def size(self):
+        return len(self.items)
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        if len(s) % 2 != 0:
+            return False
+        else:
+            stack = Stack()
+            for letter in s:
+                if letter in "([{":
+                    stack.push(letter)
+                elif letter in ")]}":
+                    if stack.size() == 0:
+                        return False
+                    else:
+                        stackPop = stack.pop()
+                        if not((stackPop == "(" and letter == ")") or (stackPop == "[" and letter == "]") or (stackPop == "{" and letter == "}")):
+                            return False
+            if stack.size() == 0:
+                return True
+            else:
+                return False
+
