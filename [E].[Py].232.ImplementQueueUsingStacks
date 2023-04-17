@@ -1,0 +1,56 @@
+class MyQueue:
+
+    def __init__(self):
+        self.__s1 = Stack()
+        self.__s2 = Stack()
+
+    def push(self, x: int) -> None:
+        self.__s1.push(x)
+
+    def pop(self) -> int:
+        while self.__s1.size() > 1:
+            self.__s2.push(self.__s1.pop())
+        returnValue = self.__s1.pop()
+        while self.__s2.size() > 0:
+            self.__s1.push(self.__s2.pop())
+        return returnValue
+
+    def peek(self) -> int:
+        while self.__s1.size() > 1:
+            self.__s2.push(self.__s1.pop())
+        returnValue = self.__s1.pop()
+        self.__s2.push(returnValue)
+        while self.__s2.size() > 0:
+            self.__s1.push(self.__s2.pop())
+        return returnValue
+
+    def empty(self) -> bool:
+        if self.__s1.size() == 0:
+            return True
+        else:
+            return False
+
+# for brevity, some methods are omitted
+class Stack(object):
+    def __init__(self):
+        self.__list = []
+
+    # add an item to the stack
+    def push(self, item):
+        """
+        add an item to the stack
+        :param item: the item to be added
+        :return: no return
+        """
+        self.__list.append(item)
+
+    # remove and return the last added object
+    def pop(self):
+        if self.size() > 0:
+            return self.__list.pop()
+        else:
+            return None
+
+    # return the size of the stack
+    def size(self):
+        return len(self.__list)
