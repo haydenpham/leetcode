@@ -1,0 +1,13 @@
+# Naive Approach
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        dictionary = dict()
+        for num in nums:
+            if num in dictionary:
+                dictionary[num] += 1
+            else:
+                dictionary[num] = 1
+        for key in dictionary:
+            if dictionary[key] == 1:
+                return key
+        return 0
