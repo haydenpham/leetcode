@@ -1,0 +1,31 @@
+class Solution {
+    // Using Sieve of Eratosthenes method
+    public static int countPrimes(int n){
+        if (n < 2) {
+            return 0;
+        } else {
+            int count = 0;
+            boolean[] primes = new boolean[n];
+            Arrays.fill(primes, false);
+
+            if (n > 2) {
+                primes[2] = true;
+                count++;
+            }
+
+            for (int i = 3; i < n; i += 2) {
+                primes[i] = true;
+            }
+
+            for (int i = 3; i < n; i += 2) {
+                if (primes[i]) {
+                    count++;
+                    for (int j = 1; i * j < n; j += 2) {
+                        primes[i * j] = false;
+                    }
+                }
+            }
+            return count;
+        }
+    }
+}
