@@ -1,0 +1,29 @@
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int first = 0, last = nums.length, mid = (first + last)/2;
+        if (target == nums[mid]){
+            return mid;
+        } else if (target > nums[mid]) {
+            first = mid;
+        } else if (target < nums[mid]) {
+            last = mid;
+        }
+        return binarySearch(nums, target, first, last);
+    }
+
+    public static int binarySearch(int[] nums, int t, int first, int last) {
+        System.out.println("First: " + first + ", Last: " + last);
+        if (first >= last){
+            return last;
+        }
+        int mid = (first + last)/2;
+        if (t == nums[mid]){
+            return mid;
+        } else if (t > nums[mid]) {
+            first = mid + 1;
+        } else if (t < nums[mid]) {
+            last = mid;
+        }
+        return binarySearch(nums, t, first, last);
+    }
+}
