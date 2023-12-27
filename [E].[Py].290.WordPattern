@@ -1,0 +1,29 @@
+class Solution(object):
+    def wordPattern(self, pattern, s):
+        """
+        :type pattern: str
+        :type s: str
+        :rtype: bool
+        """
+        words = s.split()
+        d1 = {}
+        d2 = {}
+        if len(words) != len(pattern):
+            return False
+        else:
+            i = 0
+            for letter in pattern:
+                if letter not in d1:
+                    d1[letter] = words[i]
+                if words[i] not in d2:
+                    d2[words[i]] = letter
+                else:
+                    if d1[letter] != words[i]:
+                        return False
+                    if d2[words[i]] != letter:
+                        return False
+                i = i + 1
+            if len(d1) != len(d2):
+                return False
+            else:
+                return True
