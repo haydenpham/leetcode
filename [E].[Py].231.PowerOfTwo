@@ -1,0 +1,29 @@
+class Solution(object):
+    def isPowerOfTwo(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        # Method 1: Build a list of powers of 2 then check if n is in list
+        list_of_powers = []
+        val = 1
+        while val <= n:
+            list_of_powers.append(val)
+            val = val * 2
+        if n in list_of_powers:
+            return True
+        else:
+            return False
+        """
+        # Method 2: keep on dividing n by 2 until 1 or another odd number (except 0)
+        if n < 0:
+            return False
+        if n == 1:
+            return True
+        else:
+            while n % 2 == 0:
+                n = n / 2
+            if n != 1:
+                return False
+            else:
+                return True
