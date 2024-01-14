@@ -1,0 +1,19 @@
+class Solution(object):
+    def checkStraightLine(self, coordinates):
+        """
+        :type coordinates: List[List[int]]
+        :rtype: bool
+        """
+        slope_of_first_pair = 0
+        slope = 0
+        for i in range(0, len(coordinates)-1):
+            if coordinates[i+1][0] == coordinates[i][0]:
+                slope = float('inf')
+            else:
+                slope = (coordinates[i + 1][1] - coordinates[i][1]) / (coordinates[i + 1][0] - coordinates[i][0])
+            if i == 0:
+                slope_of_first_pair = slope
+            else:
+                if slope != slope_of_first_pair:
+                    return False
+        return True
