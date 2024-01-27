@@ -1,0 +1,27 @@
+class Solution {
+    public String gcdOfStrings(String str1, String str2) {
+        if (!(str1 + str2).equals(str2 + str1)) return "";
+
+        /* find the pattern in shorter string */
+        if (str1.length() < str2.length()){
+            String t = str2;
+            str2 = str1;
+            str1 = t;
+        }
+        // str2 is shorter
+        int i = str2.length();
+        while (!isDivisible(str1, str2.substring(0,i)) || !isDivisible(str2, str2.substring(0,i))){
+            i--;
+        }
+        return str2.substring(0,i);
+
+    }
+
+    // check if s1 = k * s2
+    public boolean isDivisible(String s1, String s2){
+        while (s1.contains(s2)){
+            s1 = s1.replaceFirst(s2, "");
+        }
+        return s1.isEmpty();
+    }
+}
