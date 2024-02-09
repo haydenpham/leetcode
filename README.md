@@ -6,6 +6,7 @@ This repository contains all the solved solutions for coding problems on LeetCod
 - Java - denoted by [J]
 - Python - denoted by [Py]
 - SQL - denoted by [SQL]
+- Bash - denoted by [B]
 
 ## Naming Format:
 [Difficulty][Programming Language].question number.question title
