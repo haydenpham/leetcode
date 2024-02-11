@@ -1,0 +1,15 @@
+public class Solution {
+    public int MostWordsFound(string[] sentences)
+    {
+        int max = 0;
+        foreach (string sentence in sentences)
+        {
+            int count = sentence.Split(' ').Length;
+            if (count > max)
+            {
+                max = count;
+            }
+        }
+        return max;
+    }
+}
