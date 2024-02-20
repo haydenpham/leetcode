@@ -1,0 +1,25 @@
+public int reverse(int x) {
+        boolean isNegative = x < 0;
+        if (isNegative) x = Math.abs(x);
+        Stack<Integer> digits = new Stack<>();
+        while (x > 0){
+            digits.add(x % 10);
+            x /= 10;
+        }
+        int returnVal = 0;
+        int multiplier = 1;
+        if (digits.size() > 9){
+            int[] maxDigits = {2, 1, 4, 7, 4, 8, 3, 6, 4, 8};
+            for (int i = 0; i < 9; i++){
+                if (digits.get(i) > maxDigits[i]) return 0;
+                if (digits.get(i) < maxDigits[i]) break;
+            }
+        }
+        // if (digits.size() > 10) return 0;
+        while (!digits.isEmpty()){
+            returnVal += digits.pop() * multiplier;
+            multiplier *= 10;
+        }
+        if (isNegative) returnVal *= -1;
+        return returnVal;
+    }
