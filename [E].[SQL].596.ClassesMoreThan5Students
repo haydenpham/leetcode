@@ -1,0 +1,5 @@
+SELECT Class
+FROM COURSES
+GROUP BY Class
+HAVING COUNT(Student) >= 5
+ORDER BY Class;
