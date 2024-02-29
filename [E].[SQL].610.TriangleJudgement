@@ -1,0 +1,5 @@
+SELECT *, 'Yes' AS triangle FROM TRIANGLE
+WHERE x+y>z AND x+z>y AND y+z>x
+UNION 
+SELECT *, 'No' AS triangle FROM TRIANGLE
+WHERE NOT(x+y>z AND x+z>y AND y+z>x);
