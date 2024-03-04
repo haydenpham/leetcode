@@ -1,0 +1,4 @@
+# Find the nth number of the Fibonacci sequence by using explicit formula
+class Solution(object):
+    def fib(self, n):
+        return int(round(((1 + math.sqrt(5)) / 2)**n / math.sqrt(5)))
