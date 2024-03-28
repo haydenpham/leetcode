@@ -1,0 +1,16 @@
+a = points[0][1]
+b = points[1][1]
+h = points[1][0] - points[0][0]
+area_of_ab_trapezoid = (a + b) * h / 2
+print(area_of_ab_trapezoid)
+a = points[1][1]
+b = points[2][1]
+h = points[2][0] - points[1][0]
+area_of_bc_trapezoid = (a + b) * h / 2
+print(area_of_bc_trapezoid)
+a = points[0][1]
+b = points[2][1]
+h = points[2][0] - points[0][0]
+area_of_ac_trapezoid = (a + b) * h / 2
+print(area_of_ac_trapezoid)
+return area_of_ab_trapezoid + area_of_bc_trapezoid != area_of_ac_trapezoid
