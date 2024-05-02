@@ -1,0 +1,22 @@
+class Solution(object):
+    def findMaxK(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        """new_list = [x for x in nums if -x in nums]
+        if len(new_list) == 0:
+            return -1
+        return max(new_list)"""
+        checked = {}
+        max_num = -1
+        for num in nums:
+            if num not in checked and (-num) not in checked:
+                checked[num] = True
+            else:
+                if (-num) not in checked:
+                    continue
+                if abs(num) > max_num:
+                    max_num = abs(num)
+        return max_num
+        
