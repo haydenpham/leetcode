@@ -1,11 +1,19 @@
-/* Naive Solution */
 public class Solution {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
+        /* Naive Solution */
         String bin = Integer.toBinaryString(n);
         int count = 0;
         for (int i = 0; i < bin.length(); i++) {
             if (bin.charAt(i) == '1') count++;
+        }
+        return count;
+
+        /* Bit Manipulation */
+        int count = 0;
+        while (n > 0) {
+            if ((n & 1) != 0) count++;
+            n = n >> 1;
         }
         return count;
     }
