@@ -1,0 +1,7 @@
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        String s = Integer.toBinaryString(n);
+        String pattern = "1(00)*";
+        return s.matches(pattern);
+    }
+}
