@@ -1,5 +1,12 @@
 class Solution {
     public boolean isPowerOfFour(int n) {
+        /* 1st Solution */
+        if (n == 0) return false;
+        while (n % 4 == 0) {
+            n /= 4;
+        }
+        return n == 1;
+        /* Second Solution */
         String s = Integer.toBinaryString(n);
         String pattern = "1(00)*";
         return s.matches(pattern);
