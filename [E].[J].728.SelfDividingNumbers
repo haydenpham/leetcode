@@ -1,0 +1,18 @@
+class Solution {
+    public List<Integer> selfDividingNumbers(int left, int right) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for (int i = left; i <= right; i++) {
+            if (isSelfDividing(i)) arrayList.add(i);
+        }
+        return arrayList;
+    }
+
+    public boolean isSelfDividing(int n){
+        String ns = Integer.toString(n);
+        if (ns.contains("0")) return false;
+        for (int i = 0; i < ns.length(); i++) {
+            if (n % Character.getNumericValue(ns.charAt(i)) != 0) return false;
+        }
+        return true;
+    }
+}
