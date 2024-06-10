@@ -1,0 +1,21 @@
+class Solution {
+    /* Naive Approach */
+    public int[] intersection(int[] nums1, int[] nums2) {
+        HashMap<Integer, Boolean> map = new HashMap<>();
+        for (int n: nums1){
+            if (!map.containsKey(n)){
+                map.put(n, false);
+            }
+        }
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int n: nums2){
+            if (map.containsKey(n)){
+                if (!map.get(n)){
+                    list.add(n);
+                    map.put(n, true);
+                }
+            }
+        }
+        return list.stream().mapToInt(i -> i).toArray();
+    }
+}
