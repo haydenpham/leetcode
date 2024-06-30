@@ -10,6 +10,7 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
+        /* Using String */
         ListNode current = head;
         StringBuilder s = new StringBuilder();
         while (current != null){
@@ -22,5 +23,20 @@ class Solution {
         if (s1.compareTo(s2) == 0){
             return true;
         } else return false;
+
+        /* Using HashMap */
+        ListNode current = head;
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        int i = 1;
+        while (current != null){
+            hashMap.put(i++, current.val);
+            current = current.next;
+        }
+        for (int j = 1; j < i; j++) {
+            if (!Objects.equals(hashMap.get(j), hashMap.get(i - j))){
+                return false;
+            }
+        }
+        return true;
     }
 }
