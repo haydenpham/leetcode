@@ -7,6 +7,7 @@ This repository contains all the solved solutions for coding problems on LeetCod
 - Python - denoted by [Py]
 - SQL - denoted by [SQL]
 - Bash Script - denoted by [B]
+- TypeScript - denoted by [T]
 
 ## Naming Format:
 [Difficulty][Programming Language].question number.question title
