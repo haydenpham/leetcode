@@ -1,0 +1,36 @@
+/* Strategy: count the number of possible spots, and plant there if it's possible */
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        if (n == 0) return true;
+        if (flowerbed.length == 1 && flowerbed[0] == 0) return n == 1;
+        if (flowerbed.length == 1 && flowerbed[0] == 1) return false;
+        int possibleSpots = 0;
+        for (int i = 0; i < flowerbed.length; i++) {
+            if (flowerbed[i] == 0){
+                if (i - 1 < 0) {
+                    if (flowerbed[i+1] == 0) {
+                        possibleSpots++;
+                        flowerbed[i] = 1;
+                    }
+                    continue;
+                }
+                if (i + 1 > flowerbed.length){
+                    continue;
+                }
+                else if (i + 1 == flowerbed.length){
+                    if (flowerbed[i-1] == 0){
+                        flowerbed[i] = 1;
+                        possibleSpots++;    
+                    }
+                    continue;
+                }
+                if (flowerbed[i-1] == 0 && flowerbed[i+1] == 0) {
+                    flowerbed[i] = 1;
+                    possibleSpots++;
+                }
+            }
+            else i++;
+        }
+        return possibleSpots >= n;
+    }
+}
