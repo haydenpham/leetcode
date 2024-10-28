@@ -1,0 +1,68 @@
+/****** PSEUDOCODE FOR BACKTRACKING *****/
+/****** Array is 1-based indexed *******/
+procedure minPathSum(A[1..m][1..n]){
+	if (m = 1) and (n = 1) then
+		return A[1][1]
+
+	goRight <- minPathSum(A[1..m][2..n])
+	goDown <- minPathSum(A[2..m][1..n])
+
+	return min(goRight, goDown)
+}
+/****** ****************** *****/
+
+/****** BACKTRACKING SOLUTION *****/
+public int minPathSum(int[][] grid) {
+  return minPathSum(grid, 0, 0);
+}
+
+public int minPathSum(int[][] grid, int i, int j) {
+  // if i and j is the last element
+  if (i == grid.length - 1 && j == grid[0].length - 1) {
+      return grid[i][j];
+  }
+  int goRight = Integer.MAX_VALUE;
+  int goDown = Integer.MAX_VALUE;
+  // check if we can go right
+  if (j + 1 < grid[0].length) {
+      goRight = grid[i][j] + minPathSum(grid, i, j + 1);
+  }
+  // check if we can go down
+  if (i + 1 < grid.length) {
+      goDown = grid[i][j] + minPathSum(grid, i + 1, j);
+  }
+  // compare to find what path is the minimum
+  return Math.min(goRight, goDown);
+}
+/****** ****************** *****/
+
+/****** DYNAMIC PROGRAMMING SOLUTION *****/
+public int minPathSum(int[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+
+        // minPath[i][j] means what is the Minimum Path Sum to minPath[i][j]
+        int[][] minPath = new int[rows][cols];
+
+        // initial value
+        minPath[0][0] = grid[0][0];
+
+        // Initialize the first row
+        for (int i = 1; i < cols; i++) {
+            minPath[0][i] = minPath[0][i-1] + grid[0][i];
+        }
+
+        // Initialize the first column
+        for (int j = 1; j < rows; j++) {
+            minPath[j][0] = minPath[j - 1][0] + grid[j][0];
+        }
+
+        // cell value = (min of upper cell and left cell) + grid value
+        for (int i = 1; i < rows; i++) {
+            for (int j = 1; j < cols; j++) {
+                minPath[i][j] = Math.min(minPath[i-1][j], minPath[i][j-1]) + grid[i][j];
+            }
+        }
+        return minPath[rows-1][cols-1];
+    }
+/****** **************************** *****/
