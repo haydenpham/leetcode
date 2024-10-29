@@ -1,0 +1,48 @@
+### BACKTRACKING SOLUTION
+import math
+
+
+class Solution(object):
+    def minFallingPathSum(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: int
+        """
+        rows = len(matrix)
+        cols = len(matrix[0])
+        minFallingPath = math.inf
+        for i in range(0, cols):
+            minFallingPath = min(minFallingPath, self.minFallingPathSumRec(matrix, 0, i))
+        return minFallingPath
+
+    def minFallingPathSumRec(self, matrix, i, j):
+        """
+        :type matrix: List[List[int]]
+        :rtype: int
+        """
+        rows = len(matrix)
+        cols = len(matrix[0])
+        below = math.inf
+        diagonal_left = math.inf
+        diagonal_right = math.inf
+
+        # check if last row
+        if i == rows - 1:
+            return matrix[i][j]
+        else:
+            below = self.minFallingPathSumRec(matrix, i+1, j)
+        # check if first column
+        if j != 0:
+            diagonal_left = self.minFallingPathSumRec(matrix, i+1, j-1)
+        # check if last column
+        if j != cols - 1:
+            diagonal_right = self.minFallingPathSumRec(matrix, i+1, j+1)
+        return matrix[i][j] + min(below, diagonal_left, diagonal_right)
+
+### BACKTRACKING SOLUTION ABOVE
+
+
+
+
+
+
