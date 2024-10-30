@@ -1,0 +1,37 @@
+public class Solution
+{
+    public int minDistance(String word1, String word2) {
+        int rows = word1.length() + 1;
+        int cols = word2.length() + 1;
+        int[][] editDistance = new int[rows][cols];
+
+        // base case: min distance from empty string to word1[0:i] is i
+        for (int i = 0; i < rows; i++) {
+            editDistance[i][0] = i;
+        }
+
+        // base case: min distance from empty string to word2[0:j] is j
+        for (int j = 1; j < cols; j++) {
+            editDistance[0][j] = j;
+        }
+
+        for (int i = 1; i < rows; i++) {
+            for (int j = 1; j < cols; j++) {
+                int insert = editDistance[i][j-1] + 1;
+                int delete = editDistance[i-1][j] + 1;
+                int doNothing = Integer.MAX_VALUE;
+                int replace = Integer.MAX_VALUE;
+                if (word1.charAt(i-1) == word2.charAt(j-1)){
+                    doNothing = editDistance[i-1][j-1];
+                }
+                else {
+                    replace = editDistance[i-1][j-1] + 1;
+                }
+                editDistance[i][j] = Math.min(Math.min(insert, delete),
+                        Math.min(doNothing, replace)
+                );
+            }
+        }
+        return editDistance[rows - 1][cols - 1];
+    }
+}
