@@ -1,0 +1,15 @@
+class Solution(object):
+    def minNumber(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: int
+        """
+        nums1.sort()
+        nums2.sort()
+        for num1 in nums1:
+            if num1 in nums2:
+                return num1
+        a = nums1[0]
+        b = min(nums2)
+        return int(str(min(a, b)) + str(max(a, b)))
