@@ -1,0 +1,18 @@
+class Solution(object):
+    def reductionOperations(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums.sort()
+        prev = nums[0]
+        tracker = []
+        s = 0
+        for i in range(1, len(nums)):
+            if nums[i] != prev:
+                prev = nums[i]
+                s += 1
+                tracker.append(s)
+            else :
+                tracker.append(s)
+        return sum(tracker)
