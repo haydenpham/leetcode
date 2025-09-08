@@ -1,0 +1,17 @@
+class Solution(object):
+    def minElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        m = self.sumOfDigits(nums[0])
+        for i in range(1, len(nums)):
+            m = min(self.sumOfDigits(nums[i]), m)
+        return m
+    
+    def sumOfDigits(self, n):
+        if n == 0:
+            return 0
+        r = n % 10
+        d = n // 10
+        return r + self.sumOfDigits(d)
