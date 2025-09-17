@@ -1,0 +1,19 @@
+class Solution(object):
+    def countBadPairs(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        count_of_good_pairs = 0
+        d = {}
+        for i in range(len(nums)):
+            if (nums[i] - i) not in d:
+                d[nums[i] - i] = 1
+            else:
+                d[nums[i] - i] += 1
+            count_of_good_pairs += d[nums[i] - i] - 1
+        n = len(nums)
+        total_pairs = n * (n - 1) // 2
+        bad_pairs = total_pairs - count_of_good_pairs
+        return bad_pairs
+        
