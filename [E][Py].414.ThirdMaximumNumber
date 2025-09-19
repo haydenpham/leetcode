@@ -1,0 +1,12 @@
+ class Solution(object):
+    def thirdMax(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        uniqlist = list(set(nums))
+        uniqlist.sort(reverse=True)
+        if len(uniqlist) >= 3:
+            return uniqlist[2]
+        else:
+            return uniqlist[0]
