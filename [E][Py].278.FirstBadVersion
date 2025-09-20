@@ -1,0 +1,26 @@
+# The isBadVersion API is already defined for you.
+# @param version, an integer
+# @return a bool
+# def isBadVersion(version):
+
+class Solution(object):
+    def firstBadVersionRec(self, a, b):
+        if a == b:
+            return a
+        if b - 1 == a:
+            if isBadVersion(a):
+                return a
+            else:
+                return b
+        t = (a + b) // 2
+        if isBadVersion(t):
+            return self.firstBadVersionRec(a, t)
+        else:
+            return self.firstBadVersionRec(t, b)
+        
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        return self.firstBadVersionRec(1, n)
