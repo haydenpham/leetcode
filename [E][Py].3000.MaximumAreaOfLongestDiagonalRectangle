@@ -1,0 +1,17 @@
+class Solution(object):
+    def areaOfMaxDiagonal(self, dimensions):
+        """
+        :type dimensions: List[List[int]]
+        :rtype: int
+        """
+        maxD = 0
+        maxA = 0
+        for r in dimensions:
+            d = r[0] ** 2 + r[1] ** 2
+            if d > maxD:
+                maxD = d
+                maxA = r[0] * r[1]
+            elif d == maxD:
+                maxA = max(maxA, r[0] * r[1])
+        return maxA
+        
