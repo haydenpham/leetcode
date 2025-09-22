@@ -1,0 +1,15 @@
+class Solution(object):
+    def splitString(self, s):
+        for i in range(1, len(s)):
+            if self.splitStringRec(int(s[:i]), s[i:]):
+                return True
+        return False
+
+    def splitStringRec(self, lastValue, s):
+        if s == "":
+            return True
+        for i in range(1, len(s) + 1):
+            if int(s[0:i]) == lastValue - 1:
+                if self.splitStringRec(int(s[0:i]), s[i:]):
+                    return True
+        return False
