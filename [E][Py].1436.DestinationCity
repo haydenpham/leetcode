@@ -1,0 +1,20 @@
+class Solution(object):
+    def getNextCity(self, paths, city):
+        for p in paths:
+            if p[0] == city:
+                return p[1]
+        return ""
+    def destCity(self, paths):
+        """
+        :type paths: List[List[str]]
+        :rtype: str
+        """
+        nextCity = paths[0][0]
+        while True:
+            t = self.getNextCity(paths, nextCity)
+            if t == "":
+                return nextCity
+            nextCity = t
+        return ""
+
+        
