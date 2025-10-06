@@ -1,0 +1,12 @@
+class Solution(object):
+    def hasAlternatingBits(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        binaryRep = bin(n)
+        for i in range(0, len(binaryRep) - 1):
+            if binaryRep[i] == binaryRep[i + 1]:
+                return False
+        return True
+        
