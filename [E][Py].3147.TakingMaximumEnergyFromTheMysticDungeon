@@ -6,22 +6,12 @@ class Solution(object):
         :rtype: int
         """
         n = len(energy)
-        memo = [0] * len(energy)
-        energyFrom = {}
-        memo[n - 1] = energy[n - 1]
-        energyFrom[n - 1] = energy[n - 1]
-        i = n - 2
-        while i >= 0:
-            if i + k >= n:
-                energyFrom[i] = energy[i]
-                memo[i] = max(memo[i + 1], energy[i])
-            else:
-                energyFrom[i] = energy[i] + energyFrom[i + k]
-                memo[i] = max(memo[i + 1], energyFrom[i])
+        start_from = [0] * len(energy)
+        i = n - 1
+        while i >= n - k:
+            start_from[i] = energy[i]
             i -= 1
-        return memo[0]
-
-
-s = Solution()
-print(s.maximumEnergy([5,2,-10,-5,1], 3))  # 3
-# print(s.maximumEnergy([-2,-3,-1], 2))  # -1
+        while i >= 0:
+            start_from[i] = energy[i] + start_from[i + k]
+            i -= 1
+        return max(start_from)
