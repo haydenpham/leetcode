@@ -1,0 +1,22 @@
+class Solution(object):
+    def checkZeroOnes(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        longest_one_count = 0
+        longest_zero_count = 0
+        c1 = 0
+        c0 = 0
+        for c in s:
+            if c == '1':
+                c1 += 1
+                longest_zero_count = max(longest_zero_count, c0)
+                c0 = 0
+            else:
+                longest_one_count = max(longest_one_count, c1)
+                c1 = 0
+                c0 += 1
+        longest_zero_count = max(longest_zero_count, c0)
+        longest_one_count = max(longest_one_count, c1)
+        return longest_one_count > longest_zero_count
