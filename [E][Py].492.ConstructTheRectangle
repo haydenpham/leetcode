@@ -1,0 +1,19 @@
+import math
+
+class Solution(object):
+    def constructRectangle(self, area):
+        """
+        :type area: int
+        :rtype: List[int]
+        """
+        r = math.ceil(math.sqrt(area))
+        a = area
+        b = 1
+        difference = area - 1
+        for i in range(2, int(r + 1)):
+            if area % i == 0 and area >= i ** 2:
+                if difference >= area / i - i:
+                    b = i
+                    a = area // i
+                    difference = a - b
+        return [a, b]
