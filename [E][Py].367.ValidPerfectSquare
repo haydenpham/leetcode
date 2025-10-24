@@ -1,0 +1,20 @@
+class Solution(object):
+    def isPerfectSquare(self, num):
+        """
+        :type num: int
+        :rtype: bool
+        """
+        lo = 1
+        hi = num // 2 + 1
+        while lo <= hi:
+            mid = lo + (hi - lo) // 2
+            t = mid ** 2
+            if t == num:
+                return True
+            if t > num:
+                # we went over, choose left
+                hi = mid - 1
+            else:
+                # we went under, choose right
+                lo = mid + 1
+        return False
