@@ -1,0 +1,26 @@
+class Solution(object):
+    def sumOfDigits(self, n):
+        s = 0
+        while n:
+            s += n % 10
+            n //= 10
+        return s
+
+    def countBalls(self, lowLimit, highLimit):
+        """
+        :type lowLimit: int
+        :type highLimit: int
+        :rtype: int
+        """
+        d = {}
+        for i in range(lowLimit, highLimit + 1):
+            s = self.sumOfDigits(i)
+            if s in d:
+                d[s] += 1
+            else:
+                d[s] = 1
+        m = 0
+        for key, value in d.items():
+            m = max(m, value)
+        return m
+        
