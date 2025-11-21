@@ -1,0 +1,22 @@
+class Solution(object):
+    def divideArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        nums.sort()
+        curr = -1
+        count = 0
+        for i in range(len(nums)):
+            if nums[i] != curr:
+                curr = nums[i]
+                if count % 2 != 0:
+                    return False
+                else:
+                    count = 1
+            else:
+                count += 1
+        return True
+
+
+        
