@@ -1,0 +1,30 @@
+class Solution(object):
+    def isVowels(self, c):
+        d = {
+            'a': True,
+            'o': True,
+            'e': True,
+            'u': True,
+            'i': True,
+        }
+        return c.lower() in d
+    def isValid(self, word):
+        """
+        :type word: str
+        :rtype: bool
+        """
+        if len(word) < 3 or not word.isalnum():
+            return False
+        hasVowels = False
+        hasConsonant = False
+        i = 0
+        while i < len(word) and (not hasVowels or not hasConsonant):
+            if not word[i].isnumeric():
+                if self.isVowels(word[i]):
+                    if not hasVowels:
+                        hasVowels = True
+                else: 
+                    if not hasConsonant:
+                        hasConsonant = True
+            i += 1
+        return hasVowels and hasConsonant
