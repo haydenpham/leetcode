@@ -1,0 +1,29 @@
+using System.Text;
+
+public class Solution {
+    public string ReverseVowels(string s)
+    {
+        List<string> vovels = ["a", "e", "i", "o", "u"];
+        Stack<char> stack = new Stack<char>();
+        foreach (char c in s)
+        {
+            if (vovels.Contains(c.ToString().ToLower()))
+            {
+                stack.Push(c);
+            }
+        }
+        StringBuilder builder = new StringBuilder();
+        foreach (char c in s)
+        {
+            if (vovels.Contains(c.ToString().ToLower()))
+            {
+                builder.Append(stack.Pop());
+            }
+            else
+            {
+                builder.Append(c);
+            }
+        }
+        return builder.ToString();
+    }
+}
