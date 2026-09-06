@@ -1,0 +1,47 @@
+public class Solution {
+    public int[][] ImageSmoother(int[][] img)
+    {
+        int[][] result = new int[img.Length][];
+
+        for (int i = 0; i < img.Length; i++)
+        {
+            // Each row of a jagged array needs to be initialized.
+            result[i] = new int[img[i].Length];
+
+            for (int j = 0; j < img[i].Length; j++)
+            {
+                int sum = 0;
+                int count = 0;
+
+                for (int k = i - 1; k < i + 2; k++)
+                {
+                    for (int l = j - 1; l < j + 2; l++)
+                    {
+                        int t = GetValOf(img, k, l);
+
+                        if (t != -1)
+                        {
+                            sum += t;
+                            count++;
+                        }
+                    }
+                }
+
+                result[i][j] = sum / count;
+            }
+        }
+
+        return result;
+    }
+
+    public static int GetValOf(int[][] img, int x, int y)
+    {
+        if (x < 0 || x >= img.Length ||
+            y < 0 || y >= img[0].Length)
+        {
+            return -1;
+        }
+
+        return img[x][y];
+    }
+}
