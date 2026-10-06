@@ -1,0 +1,22 @@
+class Solution(object):
+    def uniqueMorseRepresentations(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        d = {}
+        c = 0
+        for w in words:
+            t = self.getTransformation(w)
+            if t not in d:
+                d[t] = 1
+                c = c + 1
+        return c
+
+    def getTransformation(self, word):
+        morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        s = ''
+        for c in word:
+            idx = ord(c) - ord('a')
+            s += morse[idx]
+        return s
